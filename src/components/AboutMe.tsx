@@ -1,19 +1,59 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import { motion, useAnimation, type PanInfo } from "framer-motion";
+import Photo1 from "../../public/images/Photo1.jpg";
+import Photo2 from "../../public/images/Photo2.jpg";
+import Photo3 from "../../public/images/Photo3.jpg";
+import Photo4 from "../../public/images/Photo4.jpg";
+import Photo5 from "../../public/images/Photo5.jpg";
+import Photo6 from "../../public/images/Photo6.jpg";
+import Photo7 from "../../public/images/Photo7.jpg";
+import Photo8 from "../../public/images/Photo8.jpg";
+import Photo9 from "../../public/images/Photo9.jpg";
+import Photo10 from "../../public/images/Photo10.jpg";
+import Photo11 from "../../public/images/Photo11.jpg";
+import Photo12 from "../../public/images/Photo12.jpg";
+import Photo13 from "../../public/images/Photo13.jpg";
+import Billie1 from "../../public/images/billie1.jpg";
+import Billie2 from "../../public/images/billie2.jpg";
+import Billie4 from "../../public/images/billie4.jpg";
+import Billie5 from "../../public/images/billie5.jpg";
+import Billie6 from "../../public/images/billie6.jpg";
+import Billie7 from "../../public/images/billie7.jpg";
+import Billie8 from "../../public/images/billie8.jpg";
+import Billie9 from "../../public/images/billie9.jpg";
+import MySketch1 from "../../public/images/MySketch1.jpg";
+import MySketch2 from "../../public/images/MySketch2.jpg";
+import MySketch3 from "../../public/images/MySketch3.jpg";
 
 // Dummy data for images and cats
 const initialImages = [
-  "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=800&q=80",
-  "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=800&q=80",
-  "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80",
-  "https://images.unsplash.com/photo-1535930749574-1399327ce78f?w=800&q=80",
+  Photo1,
+  Photo2,
+  Photo3,
+  Photo4,
+  Photo5,
+  Photo6,
+  Photo7,
+  Photo8,
+  Photo9,
+  Photo10,
+  Photo11,
+  Photo12,
+  Photo13,
 ];
 
 const cats = [
-  "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600&q=60",
-  "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&q=60",
-  "https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=600&q=60",
+  Billie1,
+  Billie2,
+  Billie4,
+  Billie5,
+  Billie6,
+  Billie7,
+  Billie8,
+  Billie9,
 ];
+
+const sketches = [MySketch1, MySketch2, MySketch3];
 
 interface DraggableCardProps {
   src: string;
@@ -27,59 +67,19 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   src,
   index,
   total,
-  isTop,
   onSwipedAway,
 }) => {
   const controls = useAnimation();
-  const dragStarted = useRef(false);
 
   const offset = index * 6;
   const scale = 1 - index * 0.03;
   const z = total - index;
 
-  const DISTANCE_THRESHOLD = 80;
-  const VELOCITY_THRESHOLD = 400;
-
   useEffect(() => {
     controls.set({ y: offset, scale, rotate: 0, x: 0, opacity: 1 });
   }, [controls, offset, scale]);
 
-  const handleDragStart = () => {
-    dragStarted.current = true;
-  };
-
-  const handleDragEnd = async (_: unknown, info: PanInfo) => {
-    const isFast = Math.abs(info.velocity.x) > VELOCITY_THRESHOLD;
-    const isFar = Math.abs(info.offset.x) > DISTANCE_THRESHOLD;
-    if (isTop && (isFast || isFar)) {
-      const dir = info.offset.x >= 0 ? 1 : -1;
-      const offX = (window.innerWidth || 800) * (dir * 1.5);
-      await controls.start({
-        x: offX,
-        rotate: dir * 15,
-        opacity: 0,
-        transition: {
-          type: "spring",
-          stiffness: 300,
-          damping: 30,
-          duration: 0.3,
-        },
-      });
-      onSwipedAway(dir);
-    } else {
-      await controls.start({
-        x: 0,
-        y: offset,
-        rotate: 0,
-        scale,
-        transition: { type: "spring", stiffness: 300, damping: 25 },
-      });
-    }
-    setTimeout(() => (dragStarted.current = false), 50);
-  };
-
   const handleClick = async () => {
-    if (dragStarted.current || !isTop) return;
     const dir = 1;
     const offX = (window.innerWidth || 800) * 1.5;
     await controls.start({
@@ -99,22 +99,13 @@ const DraggableCard: React.FC<DraggableCardProps> = ({
   return (
     <motion.div
       key={src}
-      className="absolute cursor-grab active:cursor-grabbing select-none pointer-events-auto"
+      className="absolute cursor-pointer select-none pointer-events-auto"
       style={{ zIndex: z }}
       animate={controls}
       initial={false}
-      drag={isTop ? "x" : false}
-      dragConstraints={
-        isTop ? { left: -50, right: 50, top: 0, bottom: 0 } : false
-      }
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-      whileTap={isTop ? { scale: 0.97 } : undefined}
-      whileHover={
-        isTop ? { y: offset - 4, scale: scale + 0.03, rotate: 1 } : undefined
-      }
-      transition={{ type: "spring", stiffness: 280, damping: 25 }}
       onClick={handleClick}
+      whileHover={{ y: offset - 4, scale: scale + 0.03, rotate: 1 }}
+      transition={{ type: "spring", stiffness: 280, damping: 25 }}
     >
       <div
         className="
@@ -154,6 +145,8 @@ const FIXED_BENTO_SPANS = [
 
 const AboutMe: React.FC = () => {
   const [images, setImages] = useState<string[]>(initialImages);
+  const [selectedCat, setSelectedCat] = useState<string | null>(null);
+  const [selectedSketch, setSelectedSketch] = useState<string | null>(null);
 
   const rotateFirstToEnd = useCallback(() => {
     setImages((prev) => {
@@ -181,8 +174,7 @@ const AboutMe: React.FC = () => {
   return (
     <section
       id="about"
-      className="p-4 sm:p-6 lg:p-12 min-h-screen bg-gray-50 text-gray-900"
-      style={{ fontFamily: "Inter, sans-serif" }}
+      className="p-4 sm:p-6 lg:p-12 min-h-[80vh] bg-gray-50 text-gray-900"
     >
       <h2 className="sr-only">About Me</h2>
 
@@ -202,34 +194,39 @@ const AboutMe: React.FC = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-xl font-bold mb-2">Hi, I&apos;m Alex 👋</h3>
+            <h3 className="text-xl font-bold mb-2">Hi, I&apos;m Nishani 👋</h3>
             <p className="text-sm text-gray-700 mb-3 flex-grow">
-              A frontend developer passionate about crafting delightful
-              interfaces. I love UI/UX, clicking photos, and building small,
-              delightful interactions on the web.
+              Software Engineer passionate about crafting delightful interfaces,
+              building small web interactions, and capturing moments through
+              photography.
             </p>
 
             <ul className="text-xs text-gray-600 space-y-1 mb-3">
               <li>
-                <strong>From:</strong> Vancouver, Canada
+                <strong>From:</strong> Mangalore, India
               </li>
               <li>
-                <strong>Interests:</strong> UI/UX, animation, photography
+                <strong>Interests:</strong> Frontend development, Sketching,
+                photography
               </li>
             </ul>
 
             <div className="mt-2 flex gap-3">
+              {/* Connect via email */}
               <a
-                className="px-3 py-1.5 bg-blue-400 hover:bg-blue-500 text-white font-medium rounded-full text-xs transition shadow-md"
-                href="#"
+                href="mailto:nishanir18@gmail.com"
+                className="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-full text-xs transition-shadow shadow-md hover:shadow-lg"
               >
                 Connect
               </a>
+
+              {/* Download CV */}
               <a
-                className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-xs transition border"
-                href="#"
+                href="/pdf/Nishani-Resume.pdf"
+                download
+                className="px-3 py-1.5 bg-teal-600 hover:bg-teal-700 text-white font-medium rounded-full text-xs transition-shadow shadow-md hover:shadow-lg"
               >
-                Say hello
+                Download CV
               </a>
             </div>
           </motion.div>
@@ -245,10 +242,11 @@ const AboutMe: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <p className="italic text-base text-gray-800">
-              “Here's to the crazy ones. The misfits. The rebels…”
+              “I would rather have questions that can&apos;t be answered than
+              answers that can&apos;t be questioned.”
             </p>
             <footer className="mt-2 text-xs text-gray-500 font-medium">
-              — Apple, "Think Different"
+              — Richard Feynman
             </footer>
           </motion.blockquote>
 
@@ -292,7 +290,9 @@ const AboutMe: React.FC = () => {
               Public repos, pins, and contributions.
             </p>
             <a
-              href="#"
+              href="https://github.com/Nishani18"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm text-blue-600 hover:text-blue-500 transition"
             >
               View profile →
@@ -329,16 +329,31 @@ const AboutMe: React.FC = () => {
             <h5 className="text-base font-semibold mb-2">
               My Feline Overlords 🐈
             </h5>
-            <div className="flex gap-2 overflow-x-auto py-1">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
               {cats.map((c) => (
                 <img
                   key={c}
                   src={c}
                   alt="cat"
-                  className="w-20 h-20 rounded-lg object-cover flex-shrink-0 border"
+                  className="w-full h-20 object-cover rounded-lg border cursor-pointer"
+                  onClick={() => setSelectedCat(c)}
                 />
               ))}
             </div>
+
+            {/* Popup / Lightbox */}
+            {selectedCat && (
+              <div
+                className="fixed inset-0 bg-black/50 flex items-center rounded-lg justify-center z-50 p-4"
+                onClick={() => setSelectedCat(null)}
+              >
+                <img
+                  src={selectedCat}
+                  alt="Enlarged cat"
+                  className="max-w-full max-h-full rounded-lg shadow-lg"
+                />
+              </div>
+            )}
           </motion.div>
 
           {/* Card 6: Sketchbook */}
@@ -352,20 +367,38 @@ const AboutMe: React.FC = () => {
           >
             <h5 className="text-base font-semibold mb-2">Sketchbook (IG)</h5>
             <div className="grid grid-cols-3 gap-1 flex-grow mb-2">
-              {initialImages.slice(0, 3).map((img, i) => (
+              {sketches.map((img, i) => (
                 <img
                   key={i}
                   src={img}
-                  className="w-full h-16 object-cover rounded shadow-sm"
+                  className="w-full h-16 object-cover rounded shadow-sm cursor-pointer"
+                  onClick={() => setSelectedSketch(img)}
                 />
               ))}
             </div>
+
             <a
-              href="#"
-              className="text-xs text-blue-600 hover:text-blue-500 transition"
+              href="https://www.instagram.com/monochromegrave?igsh=MXc2Zm10c2VyOG1kcg=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-blue-600 hover:text-blue-500 transition"
             >
               Visit sketchbook →
             </a>
+
+            {/* Popup / Lightbox */}
+            {selectedSketch && (
+              <div
+                className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+                onClick={() => setSelectedSketch(null)}
+              >
+                <img
+                  src={selectedSketch}
+                  alt="Enlarged sketch"
+                  className="max-w-full max-h-full rounded-lg shadow-lg"
+                />
+              </div>
+            )}
           </motion.div>
 
           {/* Card 7: Spotify */}

@@ -13,27 +13,19 @@ type Experience = {
 const EXPERIENCE_DATA: Experience[] = [
   {
     id: 1,
-    period: "2022 - Present",
-    title: "Senior Front-End Engineer",
-    company: "Tech Innovators Corp.",
+    period: " Sept 2023 – Present",
+    title: "Software Engineer",
+    company: "CDQP Design Webtech Pvt Ltd",
     description:
-      "Architecting and developing core UI components for enterprise SaaS products. Focused on performance optimization and scalable design patterns.",
+      "Led frontend development using React, Next.js, Redux, and Tailwind, turning Figma designs into responsive, user-friendly interfaces. Delivered e-commerce and business card platforms with real-time API integration and optimized performance.",
   },
   {
     id: 2,
-    period: "2019 - 2022",
-    title: "Software Developer",
-    company: "Digital Solutions LLC",
+    period: " Apr 2023 – Jun 2023",
+    title: "Software Developer Intern",
+    company: "CDQP Design Webtech Pvt Ltd",
     description:
-      "Worked on various client projects, specializing in full-stack development with a strong emphasis on user experience and accessibility standards.",
-  },
-  {
-    id: 3,
-    period: "2018 - 2019",
-    title: "Junior Developer",
-    company: "Startup Labs",
-    description:
-      "Contributed to building early prototypes and MVPs, gaining foundational experience in rapid development cycles and cross-functional collaboration.",
+      "Developed and maintained backend features with Laravel 7, including migrations, routing, and middleware, while building responsive, user-friendly web interfaces using Bootstrap, CSS, and modern frontend best practices.",
   },
 ];
 

@@ -1,14 +1,12 @@
-import {
-  Code,
-  Github,
-  CheckCircle,
-  Award,
-  Briefcase,
-  Mail,
-  Home,
-} from "lucide-react";
+import { Code, Github } from "lucide-react";
 import { motion } from "framer-motion";
 import type { FC } from "react";
+import React from "../../public/images/reactjs.png";
+import Typescript from "../../public/images/typescript.png";
+import Redux from "../../public/images/redux.png";
+import Tailwind from "../../public/images/tailwind.png";
+import Node from "../../public/images/nodejs.webp";
+import Vue from "../../public/images/vue.png";
 
 // Types
 type Project = {
@@ -23,7 +21,7 @@ type Skill = {
   id: number;
   name: string;
   proficiency: number;
-  icon: FC<{ size: number; className: string }>;
+  icon: string;
 };
 
 // Reusable Section Wrapper
@@ -58,37 +56,37 @@ const GlassContainer: FC<{
 const PROJECTS_DATA: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform Redesign",
+    title: "E-Commerce Platform",
     description:
-      "Revamped a large-scale e-commerce platform using React and TypeScript, improving load time by 40% and boosting conversions by 15%.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "GraphQL"],
+      "Built a robust e-commerce platform using React and TypeScript, optimizing load times by 40% and increasing conversion rates by 15%.",
+    technologies: ["Next.js", "React.js", "TypeScript", "Tailwind CSS"],
     githubUrl: "#",
   },
   {
     id: 2,
-    title: "AI Chatbot Integration",
+    title: "Clinic Management Portal",
     description:
-      "Integrated an AI chatbot powered by Gemini API for automated customer support, reducing response times and ticket volume by 25%.",
-    technologies: ["Next.js", "Gemini API", "Zustand", "Framer Motion"],
+      "Developed a comprehensive clinic management portal to streamline patient records, appointments, and administrative workflows.",
+    technologies: ["Nuxt.js", "Vue.js", "TypeScript", "Pinia"],
     githubUrl: "#",
   },
   {
     id: 3,
-    title: "Financial Dashboard (SaaS)",
+    title: "Business Card Management Portal",
     description:
-      "Developed an analytics dashboard with interactive data visualizations and real-time sync using d3.js and MongoDB.",
-    technologies: ["Angular", "RxJS", "Node.js", "MongoDB"],
+      "Developed the frontend of a portal to help users maintain professional connections and discover new contacts, with interactive dashboards and intuitive UI.",
+    technologies: ["Next.js", "React.js", "Redux Toolkit"],
     githubUrl: "#",
   },
 ];
 
 const SKILLS_DATA: Skill[] = [
-  { id: 1, name: "React / Next.js", proficiency: 95, icon: Code },
-  { id: 2, name: "TypeScript", proficiency: 90, icon: CheckCircle },
-  { id: 3, name: "Framer Motion", proficiency: 85, icon: Award },
-  { id: 4, name: "Tailwind CSS", proficiency: 98, icon: Briefcase },
-  { id: 5, name: "APIs (REST/GraphQL)", proficiency: 80, icon: Mail },
-  { id: 6, name: "Cloud (Firebase/GCP)", proficiency: 75, icon: Home },
+  { id: 1, name: "React / Next.js", proficiency: 90, icon: React },
+  { id: 2, name: "TypeScript", proficiency: 90, icon: Typescript },
+  { id: 3, name: "Redux Toolkit", proficiency: 85, icon: Redux },
+  { id: 4, name: "Tailwind CSS", proficiency: 95, icon: Tailwind },
+  { id: 5, name: "Node / express.js", proficiency: 75, icon: Node },
+  { id: 6, name: "Vue / Nuxt.js", proficiency: 70, icon: Vue },
 ];
 
 // --- Component ---
@@ -159,7 +157,6 @@ const ProjectsAndSkillsSection: React.FC = () => (
     <Section id="skills" title="Core Skills & Expertise">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {SKILLS_DATA.map((skill, index) => {
-          const Icon = skill.icon;
           return (
             <GlassContainer
               key={skill.id}
@@ -172,7 +169,11 @@ const ProjectsAndSkillsSection: React.FC = () => (
               className="p-6 space-y-4 hover:shadow-sky-200/50"
             >
               <div className="flex items-center space-x-4">
-                <Icon size={32} className="text-sky-600" />
+                <img
+                  src={skill.icon}
+                  alt={skill.name}
+                  className="w-8 h-8 object-contain"
+                />
                 <h3 className="text-lg md:text-xl font-semibold text-gray-900">
                   {skill.name}
                 </h3>

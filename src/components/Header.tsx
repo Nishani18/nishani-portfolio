@@ -2,6 +2,7 @@ import GlassContainer from "@/lib/GlassContainer";
 import { AnimatePresence, motion } from "framer-motion";
 import { Briefcase, Code, Home, Mail, Menu, User, X } from "lucide-react";
 import { useMemo, useState } from "react";
+import MyPhoto from "../../public/images/my-photo.jpg";
 
 const HeaderComponent: React.FC<{ activeSection: string }> = ({
   activeSection,
@@ -74,11 +75,18 @@ const HeaderComponent: React.FC<{ activeSection: string }> = ({
       <div className="p-3 md:p-4">
         <GlassContainer className="flex justify-between items-center max-w-7xl mx-auto !p-3 rounded-2xl transition-all duration-300 glass-card">
           {/* Logo */}
-          <a
-            href="#home"
-            className="text-lg md:text-xl font-semibold text-gray-900 tracking-wide"
-          >
-            Portfolio<span className="text-sky-600">.io</span>
+          <a href="#home" className="flex items-center space-x-2">
+            <img
+              src={MyPhoto}
+              alt="Profile"
+              className="w-10 h-10 rounded-full object-cover"
+            />
+            <div className="flex flex-col">
+              <span className="text-sm font-semibold text-gray-900">
+                Nishani
+              </span>
+              <span className="text-xs text-gray-500">Software Engineer</span>
+            </div>
           </a>
 
           {/* Desktop Navigation */}

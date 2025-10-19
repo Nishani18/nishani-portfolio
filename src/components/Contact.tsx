@@ -51,27 +51,26 @@ const ContactSection: React.FC = () => (
             <div className="flex items-center gap-4">
               <Mail size={24} className="text-gray-800" />
               <a
-                href="mailto:jane.doe@example.com"
+                href="mailto:nishanir18@gmail.com"
                 className="hover:text-sky-600 transition-colors font-medium"
               >
-                jane.doe@example.com
+                nishanir18@gmail.com
               </a>
             </div>
-            <div className="flex items-center gap-4">
-              <Smartphone size={24} className="text-gray-800" />
-              <p className="font-medium">+1 (555) 123-4567</p>
-            </div>
+
             <div className="flex items-center gap-4">
               <MapPin size={24} className="text-gray-800" />
-              <p className="font-medium">San Francisco, CA, USA</p>
+              <p className="font-medium">Mangalore, KA, India</p>
             </div>
           </div>
 
           <div className="flex gap-6 pt-4">
             {[
-              { icon: Linkedin, href: "#" },
-              { icon: Github, href: "#" },
-              { icon: X, href: "#" },
+              {
+                icon: Linkedin,
+                href: "https://www.linkedin.com/in/nishani-r-18b9a11b0/",
+              },
+              { icon: Github, href: "https://github.com/Nishani18" },
             ].map(({ icon: Icon, href }, i) => (
               <motion.a
                 key={i}
