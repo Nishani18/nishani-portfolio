@@ -1,12 +1,4 @@
-import {
-  Github,
-  Linkedin,
-  Mail,
-  MapPin,
-  Smartphone,
-  X,
-  Send,
-} from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import Section from "./Section";
 import GlassContainer from "@/lib/GlassContainer";

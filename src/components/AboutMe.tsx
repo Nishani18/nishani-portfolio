@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useCallback, useRef } from "react";
-import { motion, useAnimation, type PanInfo } from "framer-motion";
+import React, { useEffect, useState, useCallback } from "react";
+import { motion, useAnimation } from "framer-motion";
 import Photo1 from "../../public/images/Photo1.jpg";
 import Photo2 from "../../public/images/Photo2.jpg";
 import Photo3 from "../../public/images/Photo3.jpg";
