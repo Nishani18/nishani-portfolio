@@ -1,8 +1,8 @@
-import { Github, Linkedin, Mail, MapPin, Send } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import Section from "./Section";
-import GlassContainer from "@/lib/GlassContainer";
 import type { Variants } from "framer-motion";
+import TerminalAnimation from "./TerminalAnimation";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -79,61 +79,10 @@ const ContactSection: React.FC = () => (
           </div>
         </motion.div>
 
-        {/* --- Contact Form (Minimal Glass Panel) --- */}
-        <motion.div
-          custom={1}
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <GlassContainer className="relative bg-white/70 backdrop-blur-2xl border border-gray-200/70 shadow-[0_4px_40px_rgba(0,0,0,0.06)] rounded-3xl p-10">
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex flex-col space-y-2">
-                  <label className="text-sm font-medium text-gray-700">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full p-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-sky-400 focus:border-sky-400 outline-none transition-all"
-                  />
-                </div>
-                <div className="flex flex-col space-y-2">
-                  <label className="text-sm font-medium text-gray-700">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="you@example.com"
-                    className="w-full p-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-sky-400 focus:border-sky-400 outline-none transition-all"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col space-y-2">
-                <label className="text-sm font-medium text-gray-700">
-                  Message
-                </label>
-                <textarea
-                  rows={5}
-                  placeholder="Type your message..."
-                  className="w-full p-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-sky-400 focus:border-sky-400 outline-none transition-all resize-none"
-                ></textarea>
-              </div>
-
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full cursor-pointer flex items-center justify-center gap-2 py-3.5 bg-gradient-to-r from-sky-500 to-blue-500 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-              >
-                <Send size={18} />
-                Send Message
-              </motion.button>
-            </form>
-          </GlassContainer>
+        {/* --- Right side: Terminal Animation --- */}
+        {/* Right side: terminal animation */}
+        <motion.div>
+          <TerminalAnimation />
         </motion.div>
       </div>
     </Section>
