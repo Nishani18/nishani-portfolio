@@ -56,27 +56,25 @@ const GlassContainer: FC<{
 const PROJECTS_DATA: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "Krishi Nidhi",
     description:
-      "Built a robust e-commerce platform using React and TypeScript, optimizing load times by 40% and increasing conversion rates by 15%.",
-    technologies: ["Next.js", "React.js", "TypeScript", "Tailwind CSS"],
-    githubUrl: "#",
+      "Developed a Farmer Management App called Krishi Nidhi featuring finance and receipt management, data visualization with charts, and real-time soil moisture readings integrated from IoT sensors. Built using React Native, Node.js, Express, and MongoDB for a seamless full-stack experience.",
+    technologies: [
+      "React Native Expo",
+      "Redux",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
+    githubUrl: "https://github.com/Nishani18/farmerapp",
   },
   {
     id: 2,
-    title: "Clinic Management Portal",
+    title: "Personal Portfolio Website",
     description:
-      "Developed a comprehensive clinic management portal to streamline patient records, appointments, and administrative workflows.",
-    technologies: ["Nuxt.js", "Vue.js", "TypeScript", "Pinia"],
-    githubUrl: "#",
-  },
-  {
-    id: 3,
-    title: "Business Card Management Portal",
-    description:
-      "Developed the frontend of a portal to help users maintain professional connections and discover new contacts, with interactive dashboards and intuitive UI.",
-    technologies: ["Next.js", "React.js", "Redux Toolkit"],
-    githubUrl: "#",
+      "Designed and developed a fully responsive developer portfolio to showcase projects, skills, and experience. Focused on performance, accessibility, and clean UI animations for a modern user experience.",
+    technologies: ["React.js", "Sass", "animate.css"],
+    githubUrl: "https://github.com/Nishani18/Portfolio",
   },
 ];
 
