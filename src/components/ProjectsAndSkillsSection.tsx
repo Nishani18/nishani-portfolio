@@ -2,11 +2,17 @@ import { Code, Github } from "lucide-react";
 import { motion } from "framer-motion";
 import type { FC } from "react";
 import React from "../../public/images/reactjs.png";
+import NextJs from "../../public/images/Next.js.png";
 import Typescript from "../../public/images/typescript.png";
 import Redux from "../../public/images/redux.png";
 import Tailwind from "../../public/images/tailwind.png";
-import Node from "../../public/images/nodejs.webp";
+import Css from "../../public/images/CSS3.png";
+import Sass from "../../public/images/Sass.png";
+import Node from "../../public/images/Node.js.png";
+import ExpressJs from "../../public/images/Express.png";
 import Vue from "../../public/images/vue.png";
+import NuxtJs from "../../public/images/Nuxt JS.png";
+import MongoDB from "../../public/images/MongoDB.png";
 
 // Types
 type Project = {
@@ -79,12 +85,18 @@ const PROJECTS_DATA: Project[] = [
 ];
 
 const SKILLS_DATA: Skill[] = [
-  { id: 1, name: "React / Next.js", proficiency: 90, icon: React },
-  { id: 2, name: "TypeScript", proficiency: 90, icon: Typescript },
-  { id: 3, name: "Redux Toolkit", proficiency: 85, icon: Redux },
-  { id: 4, name: "Tailwind CSS", proficiency: 95, icon: Tailwind },
-  { id: 5, name: "Node / express.js", proficiency: 75, icon: Node },
-  { id: 6, name: "Vue / Nuxt.js", proficiency: 70, icon: Vue },
+  { id: 1, name: "React.js / React Native", proficiency: 90, icon: React },
+  { id: 2, name: "Next.js", proficiency: 90, icon: NextJs },
+  { id: 3, name: "TypeScript", proficiency: 90, icon: Typescript },
+  { id: 4, name: "Redux Toolkit", proficiency: 85, icon: Redux },
+  { id: 6, name: "CSS3", proficiency: 85, icon: Css },
+  { id: 7, name: "Sass (SCSS)", proficiency: 95, icon: Sass },
+  { id: 8, name: "Tailwind CSS", proficiency: 95, icon: Tailwind },
+  { id: 9, name: "Node.js", proficiency: 75, icon: Node },
+  { id: 10, name: "Express.js", proficiency: 75, icon: ExpressJs },
+  { id: 11, name: "MongoDB", proficiency: 75, icon: MongoDB },
+  { id: 12, name: "Vue.js", proficiency: 75, icon: Vue },
+  { id: 13, name: "Nuxt.js", proficiency: 70, icon: NuxtJs },
 ];
 
 // --- Component ---
@@ -153,46 +165,66 @@ const ProjectsAndSkillsSection: React.FC = () => (
 
     {/* --- Skills Section --- */}
     <Section id="skills" title="Core Skills & Expertise">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {SKILLS_DATA.map((skill, index) => {
-          return (
-            <GlassContainer
-              key={skill.id}
-              motionProps={{
-                initial: { opacity: 0, y: 30 },
-                whileInView: { opacity: 1, y: 0 },
-                transition: { duration: 0.6, delay: index * 0.1 },
-                viewport: { once: true },
-              }}
-              className="p-6 space-y-4 hover:shadow-sky-200/50"
+      <div className="relative flex flex-wrap justify-center gap-10 sm:gap-14 py-4 md:py-10 xl:px-10">
+        {SKILLS_DATA.map((skill, index) => (
+          <motion.div
+            key={skill.id}
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="
+          relative group flex flex-col items-center justify-center text-center select-none
+          transition-all duration-500 ease-out
+          hover:-translate-y-2
+        "
+          >
+            {/* Soft gradient ring (more subtle) */}
+            <div
+              className="
+            relative w-24 h-24 sm:w-28 sm:h-28 rounded-full flex items-center justify-center
+            bg-white shadow-[0_4px_15px_rgba(0,0,0,0.05)]
+            before:content-[''] before:absolute before:inset-0 before:rounded-full
+            before:p-[2px] before:bg-gradient-to-tr before:from-sky-400/20 before:to-cyan-300/10
+            before:-z-10 before:blur-[0.5px]
+            transition-transform duration-500 group-hover:scale-105
+          "
             >
-              <div className="flex items-center space-x-4">
-                <img
-                  src={skill.icon}
-                  alt={skill.name}
-                  className="w-8 h-8 object-contain"
-                />
-                <h3 className="text-lg md:text-xl font-semibold text-gray-900">
-                  {skill.name}
-                </h3>
-              </div>
+              <img
+                src={skill.icon}
+                alt={skill.name}
+                className="
+              w-10 h-10 sm:w-12 sm:h-12 object-contain transition-transform duration-700
+              group-hover:scale-110
+            "
+              />
+            </div>
 
-              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-sky-500 to-blue-400"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.proficiency}%` }}
-                  transition={{ duration: 1.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                />
-              </div>
+            {/* Name */}
+            <div
+              className="
+            mt-4 text-base font-medium text-slate-800
+            tracking-wide transition-colors duration-300 group-hover:text-sky-600
+          "
+            >
+              {skill.name}
+            </div>
 
-              <p className="text-xs font-medium text-gray-600 text-right">
-                {skill.proficiency}% Proficient
-              </p>
-            </GlassContainer>
-          );
-        })}
+            {/* Subtle floating animation */}
+            <div className="absolute inset-0 -z-10 animate-[float_6s_ease-in-out_infinite]" />
+          </motion.div>
+        ))}
+
+        {/* Soft ambient background gradient */}
+        <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.04),transparent_70%)]" />
+
+        {/* Floating keyframes */}
+        <style>{`
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-6px); }
+      }
+    `}</style>
       </div>
     </Section>
   </div>
