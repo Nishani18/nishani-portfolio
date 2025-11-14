@@ -13,6 +13,7 @@ import ExpressJs from "../../public/images/Express.png";
 import Vue from "../../public/images/vue.png";
 import NuxtJs from "../../public/images/Nuxt JS.png";
 import MongoDB from "../../public/images/MongoDB.png";
+import Figma from "../../public/images/Figma.png";
 
 // Types
 type Project = {
@@ -97,6 +98,7 @@ const SKILLS_DATA: Skill[] = [
   { id: 11, name: "MongoDB", proficiency: 75, icon: MongoDB },
   { id: 12, name: "Vue.js", proficiency: 75, icon: Vue },
   { id: 13, name: "Nuxt.js", proficiency: 70, icon: NuxtJs },
+  { id: 14, name: "Figma", proficiency: 70, icon: Figma },
 ];
 
 // --- Component ---
