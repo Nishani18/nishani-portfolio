@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box } from "lucide-react";
 
 interface CardProps {
@@ -33,6 +33,20 @@ const FloatingCard: React.FC<CardProps> = ({
 );
 
 const HeroSection: React.FC = () => {
+  const [displayText, setDisplayText] = useState("");
+  const fullText = "Nishani";
+
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      setDisplayText(fullText.slice(0, index));
+      index++;
+      if (index > fullText.length) clearInterval(interval);
+    }, 120); // typing speed
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="home"
@@ -135,7 +149,7 @@ const HeroSection: React.FC = () => {
             <span className="text-xs font-medium text-gray-700">Skills</span>
           </div>
           <p className="text-base font-medium">
-            JavaScript, React, TailwindCSS
+            React.js, Next.js, TailwindCSS, JavaScript
           </p>
         </div>
       </FloatingCard>
@@ -148,11 +162,13 @@ const HeroSection: React.FC = () => {
           transition={{ duration: 1, delay: 0.2 }}
           className="space-y-6 text-center max-w-xl"
         >
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-gray-900">
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight text-gray-900">
             <span className="block text-2xl md:text-3xl font-light text-gray-500 mb-2">
               Hello, I'm
             </span>
-            Nishani
+
+            {/* Typewriter Text */}
+            <span className="typing-effect">{displayText}</span>
           </h1>
 
           <p className="text-lg md:text-2xl text-gray-700 font-light">

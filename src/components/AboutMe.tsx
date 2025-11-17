@@ -197,8 +197,8 @@ const AboutMe: React.FC = () => {
             <h3 className="text-xl font-bold mb-2">Hi, I&apos;m Nishani 👋</h3>
             <p className="text-sm text-gray-700 mb-3 flex-grow">
               Software Engineer passionate about crafting delightful interfaces,
-              building small web interactions, and capturing moments through
-              photography.
+              building subtle web interactions, and expressing creativity
+              through sketching.
             </p>
 
             <ul className="text-xs text-gray-600 space-y-1 mb-3">
@@ -206,8 +206,8 @@ const AboutMe: React.FC = () => {
                 <strong>From:</strong> Mangalore, India
               </li>
               <li>
-                <strong>Interests:</strong> Frontend development, Sketching,
-                photography
+                <strong>Interests:</strong> Frontend development, sketching, and
+                unwinding with movies, K-dramas, and anime.
               </li>
             </ul>
 

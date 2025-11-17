@@ -153,3 +153,16 @@ body {
     rgba(255, 255, 255, 0.3)
   );
 }
+
+.typing-effect {
+  border-right: 2px solid #333;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}

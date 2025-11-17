@@ -14,7 +14,7 @@ const Section: React.FC<{
     transition={{ duration: 0.8 }}
   >
     <motion.h2
-      className="text-3xl md:text-4xl font-extrabold mb-12 text-gray-900 bg-clip-text bg-gradient-to-r from-sky-500 to-teal-400"
+      className="text-3xl md:text-4xl font-semibold mb-12 text-gray-900 bg-clip-text bg-gradient-to-r from-sky-500 to-teal-400"
       initial={{ scale: 0.9, opacity: 0 }}
       whileInView={{ scale: 1, opacity: 1 }}
       viewport={{ once: true }}

@@ -38,7 +38,7 @@ const Section: FC<{ id: string; title: string; children: React.ReactNode }> = ({
   children,
 }) => (
   <section id={id} className="py-20">
-    <h2 className="text-3xl md:text-4xl font-extrabold mb-12 text-center text-black">
+    <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-black">
       {title}
     </h2>
     {children}

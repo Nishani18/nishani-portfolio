@@ -43,7 +43,7 @@ const Section: FC<{ id: string; title: string; children: React.ReactNode }> = ({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="text-3xl md:text-4xl font-extrabold tracking-tight text-center text-gray-900 mb-16"
+      className="text-3xl md:text-4xl font-bold tracking-tight text-center text-gray-900 mb-16"
     >
       {title}
     </motion.h2>
